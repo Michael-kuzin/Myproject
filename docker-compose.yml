@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  core:
+    build: ./file_manager
+    container_name: file_manager
+    ports:
+      - "3001:3001"
