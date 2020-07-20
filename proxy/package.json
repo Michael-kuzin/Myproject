@@ -4,10 +4,10 @@
   "private": true,
   "description": "File manager microservice",
   "scripts": {
-    "develop": "node -r ts-node/register ./src/index.ts",
+    "start": "node -r ts-node/register ./src/index.ts",
+    "start:watch": "nodemon",
     "format": "prettier --write \"**/*.ts\"",
     "build": "tsc",
-    "start": "node ./index.js",
     "tslint": "tslint --project ./"
   },
   "license": "Commercial",

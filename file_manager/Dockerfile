@@ -1,22 +1,19 @@
-FROM node:12-alpine as assets_prepare
+FROM node:12
 
-RUN set -ex && \
-    mkdir -p /var/backend/file_manager
+RUN mkdir -p /usr/src/app
 
-WORKDIR /var/backend/file_manager
+WORKDIR /usr/src/app
 
-COPY package.json package-lock.json ./
+COPY package.json .
 
-RUN apk add --no-cache bash && \
-    npm install
+RUN npm install
 
-FROM node:12-alpine
+COPY . .
 
-COPY --from=assets_prepare /var/backend/file_manager /var/backend/file_manager
+RUN npm run build
 
-COPY . /var/backend/file_manager
+RUN cp -r ./dist/src/* .
 
-WORKDIR /var/backend/file_manager
+EXPOSE 3333
 
-CMD [ "npm", "start" ]
-
+CMD ["npm", "run", "start"]
