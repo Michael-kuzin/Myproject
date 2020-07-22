@@ -14,8 +14,15 @@ const arr = [];
 //     res.end(JSON.stringify(req.body, null, 2))
 // });
 
-app.get('/', function (req, res) {
-    res.json(arr);
+app.get('/', async function (req, res) {
+
+    let min = req.query.min;
+    let max = req.query.max;
+
+    let newArr = arr.filter((item) => item.age >= min && item.age <= max);
+
+console.log(req.query.min);
+ res.json(newArr);
 });
 
 app.get('/:id',function(req,res) {
