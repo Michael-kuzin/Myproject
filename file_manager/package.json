@@ -8,6 +8,7 @@
     "format": "prettier --write \"**/*.ts\"",
     "build": "tsc",
     "start": "node ./index.js",
+
     "tslint": "tslint --project ./"
   },
   "license": "Commercial",
