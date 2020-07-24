@@ -14,14 +14,34 @@ const arr = [];
 //     res.end(JSON.stringify(req.body, null, 2))
 // });
 
+const compareFunction(a, b) {
+  if (a.age > b.age) {
+    return 1;
+  }
+  if (a.age < b.age) {
+    return -1;
+  }
+  return 0;
+}
+
 app.get('/', async function (req, res) {
 
-    let min = req.query.min;
-    let max = req.query.max;
+     let min = req.query.min;
+     let max = req.query.max;
+     let sort = req.query.sort;
 
-    let newArr = arr.filter((item) => item.age >= min && item.age <= max);
+   let newArr = () => { if(min && max) {
+       return arr.filter((item) => item.age >= min && item.age <= max);
+    } else if(sort) {
+         return arr.sort(compareFunction);
+    } else if(min && max && sort) {
+      return arr.filter((item) => item.age >= min && item.age <= max).sort(compareFunction)
+    }
+  }
 
-console.log(req.query.min);
+    // let newArr1 = arr.sort(compareFunction);
+    // let newArr = arr.filter((item) => item.age >= min && item.age <= max);
+
  res.json(newArr);
 });
 
