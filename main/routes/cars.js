@@ -1,7 +1,6 @@
 import express from "express";
 
 const router = express.Router();
-
 const arr = [];
 
 const compareFunction = function(a, b) {
@@ -107,6 +106,5 @@ router.delete('/:id',function(req,res) {
        }
    });
 });
-
 
 export default router;
