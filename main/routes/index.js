@@ -7,5 +7,4 @@ const router = express.Router();
 router.use('/users', users);
 router.use('/cars', cars);
 
-
 export default router;
