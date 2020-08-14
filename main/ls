@@ -1,0 +1,12 @@
+[0;1;32m●[0m mongodb.service - An object/document-oriented database
+   Loaded: loaded (/lib/systemd/system/mongodb.service; enabled; vendor preset: enabled)
+   Active: [0;1;32mactive (running)[0m since Fri 2020-08-14 01:04:23 HDT; 19s ago
+     Docs: man:mongod(1)
+ Main PID: 8405 (mongod)
+    Tasks: 4 (limit: 4915)
+   Memory: 288.9M
+   CGroup: /system.slice/mongodb.service
+           └─8405 /usr/bin/mongod --config /etc/mongodb.conf
+
+Aug 14 01:04:23 r2p2 systemd[1]: Started An object/document-oriented database.
+Aug 14 01:04:23 r2p2 mongod[8405]: all output going to: /var/log/mongodb/mongodb.log
