@@ -62,8 +62,7 @@ let checkAdmin = function(req, res, next) {
 
 
 router.post('/', validatorFunc, checkAdmin, function (req,res) {
-    // res.write('you posted:\n');
-    // res.end(JSON.stringify(req.body, null, 2))
+  console.log("post req")
       let reqObj = req.body;
 
        arr.push(reqObj);

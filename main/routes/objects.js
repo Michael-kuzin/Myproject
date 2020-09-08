@@ -12,18 +12,43 @@ router.get('/', async function (req, res) {
 
 router.get('/:id',function(req,res) {
       let result;
-      if(obj.id === req.params.id) {
-         result = obj
+      if(obj[req.params.id] !== undefined) {
+         res.send(obj[req.params.id])
       } else {
         console.log("id false")
       }
       res.send(result)
  });
 
-router.post('/', function (req,res) {
+  
+let transofrmer = function(req,res,next) {
+
+  if(req.body.age) {  
+    if(req.body.age < 18) {
+      req.body["content"] = "kids"
+    } else {
+      req.body["content"] = "adult"
+    }
+  } 
+
+    next()
+}
+
+
+router.post('/', transofrmer, function (req,res) {
 
     let reqObj = req.body;
-    obj = reqObj;
+   
+    if(obj[req.body.id] == undefined) {
+      obj[req.body.id] = reqObj
+    } else {
+      delete obj[req.body.id]
+      obj[req.body.id] = reqObj
+    }
+    // let r = req.route;
+    // console.log(req.body);
+    // console.log(r);
+
     res.json(reqObj);
 });
 
