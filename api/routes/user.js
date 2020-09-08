@@ -6,7 +6,8 @@ const arr = [];
 
 
 router.get('/', async function (req, res) {
-     res.json(arr)
+   console.log("3001")
+     res.send(arr)
  });
 
  router.post('/',function (req,res) {
