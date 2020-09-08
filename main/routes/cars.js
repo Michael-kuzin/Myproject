@@ -60,16 +60,12 @@ let checkAdmin = function(req, res, next) {
 
 
 router.post('/', validatorFunc, checkAdmin, function (req,res) {
-  var artist = {
-name: req.body.name
-};
-this.dataBaseObject.collection(artists).insert(artist, function (err, result) {
-if(err) {
-console.log(err);
-return res.sendStatus(500);
-}
-res.send(artist);
-})
+    // res.write('you posted:\n');
+    // res.end(JSON.stringify(req.body, null, 2))
+      let reqObj = req.body;
+
+       arr.push(reqObj);
+       res.json(reqObj);
 });
 
 router.put('/:id',function(req,res) {

@@ -16,7 +16,7 @@ connector.init();
 
 app.get('/artists',function(req,res) {
   connector.get().collection('artists').find().toArray(function(err,docs){
-    if(err) {
+    if(err) { console.log()
     console.log(err);
     return res.sendStatus(500);
     }
