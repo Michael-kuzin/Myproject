@@ -7,12 +7,14 @@ router.get('/', async function (req, res) {
     const result = await axios.get('http://localhost:3000/api/v1/users')
     console.log('result');
     console.log(result);
+    console.log(result.data);
+    console.log(result.data[0]);
 
-    const cars = await Promise.all(result.cars.map(carId => {
+    const cars = await Promise.all(result.data[0].cars.map(carId => {
         console.log('car');
         console.log(carId);
         return new Promise((resolve, reject) => {
-            axios.get('http://localhost:3000/api/v1/cars/id').then(res => {
+            axios.get('http://localhost:3000/api/v1/cars/${carId}').then(res => {
                 resolve(res);
             })
             .catch(err => {
@@ -21,14 +23,14 @@ router.get('/', async function (req, res) {
         });
     }));
 
-    
 
-     // console.log(result); 
+
+
+     // console.log(result);
       res.send(result.data);
-   
+
  });
 
 
- 
+
  export default router;
- 

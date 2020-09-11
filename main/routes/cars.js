@@ -15,25 +15,7 @@ const compareFunction = function(a, b) {
 
 router.get('/', async function (req, res) {
 
-     let min = req.query.min;
-     let max = req.query.max;
-     let sort = req.query.sort;
-
-   let newArr = arr;
-
-   if (sort) {
-     newArr = newArr.sort(compareFunction);
-   }
-
-   if (min) {
-     newArr = newArr.filter((item) => item.age >= min)
-   }
-
-   if (max) {
-     newArr = newArr.filter((item) => item.age <= max)
-   }
-
- res.json(newArr);
+ res.json(arr);
 });
 
 router.get('/:id',function(req,res) {
@@ -59,7 +41,7 @@ let checkAdmin = function(req, res, next) {
 }
 
 
-router.post('/', validatorFunc, checkAdmin, function (req,res) {
+router.post('/', function (req,res) {
     // res.write('you posted:\n');
     // res.end(JSON.stringify(req.body, null, 2))
       let reqObj = req.body;
