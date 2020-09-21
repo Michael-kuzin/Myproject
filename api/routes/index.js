@@ -1,6 +1,6 @@
 import express from "express";
-// import bodyParser from 'body-parser';
 import connect from "./connect";
+// import bodyParser from 'body-parser';
 import user from "./user";
 
 const router = express.Router();
@@ -9,6 +9,5 @@ const router = express.Router();
 
 router.use("/user",user);
 router.use("/connect",connect);
-
 
 export default router;

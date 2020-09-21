@@ -17,7 +17,25 @@ const compareFunction = function(a, b) {
 
 router.get('/', async function (req, res) {
 
- res.json(arr);
+     let min = req.query.min;
+     let max = req.query.max;
+     let sort = req.query.sort;
+
+   let newArr = arr;
+
+   if (sort) {
+     newArr = newArr.sort(compareFunction);
+   }
+
+   if (min) {
+     newArr = newArr.filter((item) => item.age >= min)
+   }
+
+   if (max) {
+     newArr = newArr.filter((item) => item.age <= max)
+   }
+
+ res.json(newArr);
 });
 
 router.get('/:id',function(req,res) {
@@ -26,28 +44,29 @@ router.get('/:id',function(req,res) {
     res.send(result)
 });
 
-let validatorFunc = function(req, res, next) {
-  let reqObj = req.body;
-     if(reqObj.age < 18) {
-       res.status(404).send('Sorry,age to low');
-     }
-    next()
-}
+// let validatorFunc = function(req, res, next) {
+//   let reqObj = req.body;
+//      if(reqObj.age < 18) {
+//        res.status(404).send('Sorry,age to low');
+//      }
+//     next()
+// }
 
-let checkAdmin = function(req, res, next) {
-  let reqObj = req.body;
-  if(reqObj.isAdmin === false) {
-    res.status(404).send('Sorry,you not admin');
-  }
- next()
-}
+// let checkAdmin = function(req, res, next) {
+//   let reqObj = req.body;
+//   if(reqObj.isAdmin === false) {
+//     res.status(404).send('Sorry,you not admin');
+//   }
+//  next()
+// }
 
 
-router.post('/', function (req,res) {
+router.post('/',function (req,res) {
   console.log("post req")
       let reqObj = req.body;
 
        arr.push(reqObj);
+       
        res.json(reqObj);
 });
 
