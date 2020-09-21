@@ -5,24 +5,25 @@ const axios = require('axios');
 
 router.get('/', async function (req, res) {
     const result = await axios.get('http://localhost:3000/api/v1/users')
-    console.log('result');
-    console.log(result.data);
+    const users = result.data; 
 
 
-    const cars = await Promise.all()        
+    let arrayOfPromises = users.map( user => 
+        Promise.all(user.cars.map(carId => 
+            axios.get(`http://localhost:3000/api/v1/cars/${carId}`)
+        ))
+    )
 
-    let dvadvavosem = [1,2,3,4];
-    let arr = dvadvavosem.map(elem => {
-        return new Promise((resolve,reject) => {
-            resolve(elem)    
-        }) 
+    const cars = await Promise.all(arrayOfPromises)  
+
+
+    users.forEach((user,index) => {
+        user.cars = cars[index]
     })
-
-
-
+    console.log(users)
 
      // console.log(result);
-      res.send(result.data);
+      res.json(users);
 
  });
 

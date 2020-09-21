@@ -37,8 +37,11 @@ router.get('/', async function (req, res) {
 });
 
 router.get('/:id',function(req,res) {
+  const {id} = req.params
   console.log("get obj by id");
-    let result = arr.filter(item => item.id === JSON.parse(req.params.id)) ? arr.filter(item => item.id === JSON.parse(req.params.id))[0] : null;
+  console.log(arr)
+  const result = arr.find(elm => elm.id === id)
+  console.log(result)
     res.send(result)
 });
 
