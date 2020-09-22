@@ -14,13 +14,17 @@ router.get('/', async function (req, res) {
         ))
     )
 
-    const cars = await Promise.all(arrayOfPromises)  
+    const arrayOfarray = await Promise.all(arrayOfPromises)  
 
-
+   
     users.forEach((user,index) => {
-        user.cars = cars[index]
+        console.log("start")
+        console.log( Array.isArray(arrayOfarray[index]))
+        console.log(arrayOfarray[index][index])
+        console.log(arrayOfarray[index][index].data)
+        user.cars = arrayOfarray[index].data
     })
-    console.log(users)
+    
 
      // console.log(result);
       res.json(users);

@@ -35,20 +35,17 @@ let transofrmer = function(req,res,next) {
 }
 
 
-router.post('/', transofrmer, function (req,res) {
+router.post('/', function (req,res) {
 
     let reqObj = req.body;
    
-    if(obj[req.body.id] == undefined) {
+    if(obj[req.body.id] === undefined) {
       obj[req.body.id] = reqObj
     } else {
       delete obj[req.body.id]
       obj[req.body.id] = reqObj
     }
-    // let r = req.route;
-    // console.log(req.body);
-    // console.log(r);
-
+    console.log(obj)
     res.json(reqObj);
 });
 
