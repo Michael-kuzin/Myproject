@@ -20,35 +20,32 @@ router.get('/:id',function(req,res) {
       res.send(result)
  });
 
-  
+
 let transofrmer = function(req,res,next) {
 
-  if(req.body.age) {  
+  if(req.body.age) {
     if(req.body.age < 18) {
       req.body["content"] = "kids"
     } else {
       req.body["content"] = "adult"
     }
-  } 
+  }
 
     next()
 }
 
 
-router.post('/', transofrmer, function (req,res) {
+router.post('/', function (req,res) {
 
     let reqObj = req.body;
-   
-    if(obj[req.body.id] == undefined) {
+
+    if(obj[req.body.id] === undefined) {
       obj[req.body.id] = reqObj
     } else {
       delete obj[req.body.id]
       obj[req.body.id] = reqObj
     }
-    // let r = req.route;
-    // console.log(req.body);
-    // console.log(r);
-
+    console.log(obj)
     res.json(reqObj);
 });
 
