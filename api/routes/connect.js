@@ -24,8 +24,23 @@ router.get('/', async function (req, res) {
     }));
 
 
+<<<<<<< HEAD
 
 
+=======
+    const arrayOfarray = await Promise.all(arrayOfPromises)  
+
+   
+    users.forEach((user,index) => {
+        console.log("start")
+        console.log( Array.isArray(arrayOfarray[index]))
+        console.log(arrayOfarray[index][index])
+        console.log(arrayOfarray[index][index].data)
+        user.cars = arrayOfarray[index].data
+    })
+    
+
+>>>>>>> bba0650bf4ac4a43add92e63409e9b2061417544
      // console.log(result);
       res.send(result.data);
 
