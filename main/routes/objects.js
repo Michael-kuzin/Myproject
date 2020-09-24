@@ -38,11 +38,6 @@ let transofrmer = function(req,res,next) {
 router.post('/', function (req,res) {
 
     let reqObj = req.body;
-<<<<<<< HEAD
-
-=======
-   
->>>>>>> bba0650bf4ac4a43add92e63409e9b2061417544
     if(obj[req.body.id] === undefined) {
       obj[req.body.id] = reqObj
     } else {
