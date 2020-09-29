@@ -23,11 +23,6 @@ router.get('/', async function (req, res) {
         });
     }));
 
-
-<<<<<<< HEAD
-
-
-=======
     const arrayOfarray = await Promise.all(arrayOfPromises)  
 
    
@@ -38,10 +33,7 @@ router.get('/', async function (req, res) {
         console.log(arrayOfarray[index][index].data)
         user.cars = arrayOfarray[index].data
     })
-    
-
->>>>>>> bba0650bf4ac4a43add92e63409e9b2061417544
-     // console.log(result);
+    // console.log(result);
       res.send(result.data);
 
  });

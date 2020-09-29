@@ -15,7 +15,7 @@ router.get('/', async function (req, res) {
      console.log(objects[key])
      console.log(objects[key].girls)
      return Promise.all(objects[key].girls.map(girlId => {
-       return axios.get(`http://localhost:3000/api/v1/cars/${girlId}`)
+       return axios.get(`http://localhost:3000/api/v1/girls/${girlId}`)
      }))
    }))
 
