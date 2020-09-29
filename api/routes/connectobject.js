@@ -12,15 +12,17 @@ router.get('/', async function (req, res) {
     console.log(keys)
 
     const girlss =  await Promise.all(keys.map((key, i) => {
-      console.log(objects[key])
-      console.log(objects[key].girls)
-      objects[key].girls.map(girlId => {
-        return axios.get(`http://localhost:3000/api/v1/cars/${girlId}`)
-     })
-    }))
+     console.log(objects[key])
+     console.log(objects[key].girls)
+     return Promise.all(objects[key].girls.map(girlId => {
+       return axios.get(`http://localhost:3000/api/v1/cars/${girlId}`)
+     }))
+   }))
 
-    console.log(girls);
-    objects.girls = objects.girls.map((girlId, index) => girls[index].data);
+   console.log(girlss);
+   keys.forEach((key,index) => {
+     objects[key].girls = girlss[index].map(response => response.data)
+   })
     res.json(objects);
  });
 
